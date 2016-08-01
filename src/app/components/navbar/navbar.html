@@ -1,19 +1,19 @@
 <nav class="navbar navbar-static-top navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="http://marvel.com/">
-        <span>MarvelLand</span>
-      </a>
-    </div>
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="http://marvel.com/">
+                <span>MarvelLand</span>
+            </a>
+        </div>
 
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6" ng-view>
-      <ul class="nav navbar-nav">
-        <li><a ng-href="#/products">Products</a></li>
-        <li><a ng-href="#/page.one">BD</a></li>
-        <li><a ng-href="#/contact">Contact</a></li>
-        <li><a ng-href="#/panier" id="panier">Panier</a> </li>
-        <span id="nbrarticle"></span>
-      </ul>
+        <div class="collapse navbar-collapse" ng-view>
+            <ul class="nav navbar-nav">
+                <li><a ui-sref="main">Accueil</a></li>
+                <li><a ui-sref="products">BD</a></li>
+                <li><a ui-sref="contact">Contact</a></li>
+                <!--<li><a ui-sref="panier" id="panier">Panier</a></li>
+                <li><a ui-sref="panier" class="articlenumber">{{nbrarticle}}</a></li>-->
+            </ul>
+        </div>
     </div>
-  </div>
 </nav>

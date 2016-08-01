@@ -8,30 +8,31 @@
   /** @ngInject */
   function routerConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
-      .state('products', {
+      .state('main', {
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'
       })
-      .state('products_one',{
-        url: '/page.one',
-        templateUrl: 'app/products.one/products-one.html',
+      .state('products',{
+        url: '/products',
+        templateUrl: 'app/products/products.html',
         controller: 'PageController',
         controllerAs: 'onepage'
-      })
-      .state('products-two',{
-        url: '/page.two',
-        templateUrl: 'app/products.two/products-two.html',
-        controller: 'CrewController',
-        controllerAs: 'pt'
       })
       .state('contact',{
         url: ('/contact'),
         templateUrl: 'app/contact/contact.html',
         controller: 'ContactController',
         controllerAs: 'contact' 
+      })
+      .state('description',{
+        url: ('/:id'),
+        templateUrl: 'app/description/description.html',
+        controller: 'DescriptionController',
+        controllerAs: 'bd' 
       });
+     
 
     $urlRouterProvider.otherwise('/');
   }
