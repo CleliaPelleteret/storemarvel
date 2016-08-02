@@ -26,6 +26,8 @@
 					var rounded = Math.round(num);
 					return new Array(rounded);
 				}
+
+				console.log(vm.cData.data.results[1].prices[0].price);
 		});
 
 		vm.gotoPage = function($index){

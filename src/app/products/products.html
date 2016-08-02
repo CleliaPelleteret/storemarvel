@@ -9,23 +9,18 @@
 		</h1>
 	</div>
 
-	<!--<div class="col-md-12">
-		Trie par: 
-		<select name="select">
-			<option value="autor" ng-model="selectAutor">Auteur</option>
-			<option value="date" ng-model="selectDate">Date</option>
-		</select>
-	</div>-->
-
 	<div class="bdPresentation">
 		<div class="row">
 			<label class="col-md-12" >Search: <input ng-model="onepage.searchT"></label>
 			<div>
-				<li class="col-md-4" id="bdPres" ng-repeat="blanketbd in onepage.cData.data.results | filter: onepage.searchT">
-					<img ng-src="{{blanketbd.images[0].path}}/portrait_xlarge.jpg"> <br/>
-					<span class="titlebd"><a ui-sref="description({id:blanketbd.id})">{{blanketbd.title}}</a></span><br/>  <!--A FAIRE-->
-					<span ng-repeat="creator in blanketbd.creators.items" class="creator">{{creator.name}}</span>
-					<button class="addCart" ng-click="addCart(blanketbd.id)">Ajouter au panier</button>    <!--A FAIRE-->
+				<li class="col-md-6" id="bdPres" ng-repeat="blanketbd in onepage.cData.data.results | filter: onepage.searchT">
+					<a ui-sref="description({id:blanketbd.id})" ><img class="productsimage" ng-src="{{blanketbd.images[0].path}}/portrait_xlarge.jpg" > <br/>
+					<span class="titlebd">{{blanketbd.title}}<br/></a></span>  <!--A FAIRE-->
+					<span ng-repeat="creator in blanketbd.creators.items" class="creator">{{creator.name}}</span><br/>
+					<p class="productsdescription">{{blanketbd.description}}</p>
+					<span class="price">{{blanketbd.prices[0].price}}$ <br/></span>
+					<button class="addCart" ng-click="addCart(blanketbd.id)">Ajouter au panier</button><br/>   <!--A FAIRE-->
+					<button class="delCart" ng-click="delCart(blanketbd.id)" ng-show="bd.oui">Supprimer du panier</button> 
 				</li>
 			</div>
 		</div>
@@ -35,7 +30,7 @@
 		<div class="row">
 			<div class="col-md-4 col-md-offset-4">
 				<div class="pagination">
-					<li ng-repeat="page in onepage.getNumber(onepage.nbrpage) | limitTo: onepage.maxPages  track by $index " ng-click='onepage.gotoPage($index)'>
+					<li class="paginationli" ng-repeat="page in onepage.getNumber(onepage.nbrpage) | limitTo: onepage.maxPages  track by $index " ng-click='onepage.gotoPage($index)'>
 						<span class="active">{{$index +1}}</span>
 					</li>
 				</div>

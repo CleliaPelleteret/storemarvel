@@ -2,18 +2,31 @@
 	<div>
     	<acme-navbar creation-date="main.creationDate" class="acme-navbar-text " ></acme-navbar>
   	</div>
-  	<div>	
-  		<h1 style=" text-align: center;">
-			Description {{bd.cData.data.results[0].title}}
-		</h1>
-	</div>  
-	{{bd.data}}
 
 	<div>
 		<div class="row">
+			<h1 class="col-md-5 col-md-offset-3">
+				<strong>{{bd.cData.data.results[0].title}}</strong>
+			</h1>
 			<div class="col-md-4">
-				<img ng-src="{{bd.cData.data.results[0].images[0].path}}/portrait_xlarge.jpg">
-			</div>			
+				<img class="descriptionimage" ng-src="{{bd.cData.data.results[0].images[0].path}}/portrait_xlarge.jpg">
+			</div>
+			<div class="col-md-7 col-md-offset-1">		
+				Creators: <span class="text">{{bd.base.creators.items[0].name}}</span><br/>
+				Serie: <span class="text">{{bd.base.series.name}}</span><br/>
+				Genre: <span class="text">{{bd.base.format}}</span><br/>
+				Nombre de pages:<span class="text">{{bd.base.pageCount}}</span><br/>
+				Date de vente: <span ng-bind= "bd.dates| date:'dd-MM-yyyy' " class="text"> {{date}}</span>
+			</div>	
+			<div class="col-md-6 col-md-offset-1" id="blue">
+				<button class="add">Ajouter au panier</button>
+				<button class="del" ng-show="bd.oui">Supprimer du panier</button>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12" id="resume">
+				<h2>Résumé:</h2><p>{{bd.base.description}}</p>
+			</div>
 		</div>
 	</div>
 </div>
