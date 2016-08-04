@@ -26,13 +26,19 @@
         controller: 'ContactController',
         controllerAs: 'contact' 
       })
+       .state('cart',{
+        url: ('/Cart'),
+        templateUrl: 'app/panier/panier.html',
+        controller: 'PanierController',
+        controllerAs: 'cart' 
+      })
       .state('description',{
         url: ('/:id'),
         templateUrl: 'app/description/description.html',
         controller: 'DescriptionController',
         controllerAs: 'bd' 
       });
-     
+        
 
     $urlRouterProvider.otherwise('/');
   }

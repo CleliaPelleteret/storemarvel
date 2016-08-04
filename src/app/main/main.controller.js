@@ -12,8 +12,8 @@
     var baseUrl = 'http://gateway.marvel.com/v1/public';
     var apiKey = 'c6e5c775a0e14c0200183cbf0cce0aca';
 
-    $http.get(baseUrl + '/characters?apikey=' + apiKey).then(function(response, status) {
-      console.log('status', status, 'response', response);
+    $http.get(baseUrl + '/characters?apikey=' + apiKey).then(function(response) {
+        vm.cData = response.data;
     });
 
     vm.awesomeThings = [];

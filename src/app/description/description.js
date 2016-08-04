@@ -17,12 +17,10 @@
 
 		$http.get(baseUrl +'/comics/'+ vm.id +'?apikey=' +apiKey).then(function(response) {
 			vm.cData = response.data;
-			console.log(vm.cData.data.results[0]);
 
 			vm.dates = vm.cData.data.results[0].dates[0].date;
-			vm.base=vm.cData.data.results[0]
-			vm.oui = true;
-				
+			vm.base= vm.cData.data.results[0];
+		
 		});
 		
 	}

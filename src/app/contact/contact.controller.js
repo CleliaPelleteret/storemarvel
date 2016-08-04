@@ -6,10 +6,9 @@
     .controller('ContactController', ContactController);
 
   /** @ngInject */
-  function ContactController() {
+  function ContactController(Cart) {
     var vm = this;
 
-    vm.data = 'je sui fier detre la ';
   }
 
 })();

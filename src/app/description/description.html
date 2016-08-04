@@ -9,7 +9,7 @@
 				<strong>{{bd.cData.data.results[0].title}}</strong>
 			</h1>
 			<div class="col-md-4">
-				<img class="descriptionimage" ng-src="{{bd.cData.data.results[0].images[0].path}}/portrait_xlarge.jpg">
+				<a ui-sref="products"><img class="descriptionimage" ng-src="{{bd.cData.data.results[0].images[0].path}}/portrait_xlarge.jpg"></a>
 			</div>
 			<div class="col-md-7 col-md-offset-1">		
 				Creators: <span class="text">{{bd.base.creators.items[0].name}}</span><br/>
@@ -20,7 +20,7 @@
 			</div>	
 			<div class="col-md-6 col-md-offset-1" id="blue">
 				<button class="add">Ajouter au panier</button>
-				<button class="del" ng-show="bd.oui">Supprimer du panier</button>
+				<button class="del">Supprimer du panier</button>
 			</div>
 		</div>
 		<div class="row">
