@@ -19,7 +19,7 @@
 				Date de vente: <span ng-bind= "bd.dates| date:'dd-MM-yyyy' " class="text"> {{date}}</span>
 			</div>	
 			<div class="col-md-6 col-md-offset-1" id="blue">
-				<button class="add">Ajouter au panier</button>
+				<button class="add" ng-click="bd.addCart(bd.tableau)">Ajouter au panier</button>
 				<button class="del">Supprimer du panier</button>
 			</div>
 		</div>

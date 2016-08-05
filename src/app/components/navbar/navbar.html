@@ -7,12 +7,12 @@
         </div>
 
         <div class="collapse navbar-collapse" ng-view>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" ng-model='vm.addCart'>
                 <li><a ui-sref="main">Accueil</a></li>
                 <li><a ui-sref="products">BD</a></li>
                 <li><a ui-sref="contact">Contact</a></li>
                 <li><a ui-sref="cart" id="panier">Panier</a></li>
-                <!--<li><a ui-sref="panier" class="articlenumber">{{nbrarticle}}</a></li>-->
+                <li><a ui-sref="panier" ></a></li>
             </ul>
         </div>
     </div>

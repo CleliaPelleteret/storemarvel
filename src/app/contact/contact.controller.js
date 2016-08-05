@@ -6,8 +6,9 @@
     .controller('ContactController', ContactController);
 
   /** @ngInject */
-  function ContactController(Cart) {
+  function ContactController() {
     var vm = this;
+    vm.hello = "ge";
 
   }
 

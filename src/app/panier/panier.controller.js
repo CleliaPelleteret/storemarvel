@@ -6,11 +6,9 @@
     .controller('PanierController', PanierController);
 
   /** @ngInject */
-	function PanierController(Cart) {
+	function PanierController() {
 		var vm = this;
-
+		vm.hello = "helo";
 	
-
-
 	}
 })();
