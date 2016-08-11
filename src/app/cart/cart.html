@@ -1,0 +1,55 @@
+<div class="container" ng-app='marvelShop''>
+	<div>
+		<acme-navbar creation-date="main.creationDate" class="acme-navbar-text " ></acme-navbar>
+	</div>
+	<div class="col-md-4 col-md-offset-5">
+		<h1>Votre panier</h1>
+	</div>
+	<div class="col-md-4" id="tableproducts">
+		<div class="sort">
+			<label>Trier par</label>
+			<button ng-click="sortBy= '-id'">Id</button>
+			<button ng-click="sortBy='-quantity'">Quantité</button>
+		</div>
+		<table>
+			<thead>
+				<tr class="well">
+					<td class="tdLeft"> Produit</td>
+					<td class="tdCenter">Quantite</td>
+					<td class="tdRight">Prix</td>
+				</tr>
+			</thead>
+			<tbody ng-repeat="product in cart.tableau | orderBy :sortBy">
+				<tr class="singleinformation">
+					<td class="tdLeft">
+						<a ui-sref="description({id:product.id})">
+							{{product.id}}
+						</a>
+					</td>
+					<td class="tdCenter">
+						<button ng-click="cart.addToCart(product.id,product.prices[0].price,1)">
+							+
+						</button>  
+						{{product.quantity}}  
+						<button ng-click="cart.delQuantityToCart(product.id)">
+						-
+						</button>
+					</td>
+					<td class="tdRight">
+						{{product.price}}$ <!--{{products.price * products.quantity}}-->
+					</td>
+				</tr>
+			</tbody>
+			<tfoot>
+				<tr class="well">
+					<td class="tdLeft">Total</td>
+					<td class="tdCenter">{{cart.cartService.getQuantityTotalCart()}}</td>
+					<td class="tdRight">{{cart.cartService.getPriceTotalCart()}}$</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+	<div>
+		<button ui-sref="products" class="col-md-2 col-md-offset-5" id="back">Retour au achat</button>
+	</div>
+</div>

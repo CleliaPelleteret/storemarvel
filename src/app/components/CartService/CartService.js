@@ -3,69 +3,67 @@
 
 	angular
 	.module('marvelShop')
-	.factory('CartService', CartService);
+	.factory('cartService', cartService);
 
-	function CartService() {
+	function cartService() {
+
+		//variable global pour toutes les methodes du service
+		var tableau = [];
+		var priceTotalCart;
+		var quantityTotalCart;
+	
 		return {
-			addCart : function(id,price,quantity,tableau) {
-				if (tableau === undefined) {
-					tableau = [];
+
+			//appeler les variables global
+			getTableau : tableau,
+			getPriceTotalCart : function(){
+				return priceTotalCart;
+			},
+
+			getQuantityTotalCart : function() {
+				return quantityTotalCart;
+			},
+
+			//fonction qui ajoute et soustrait les quantités et prix
+			calculQuantityPriceCart : function(){
+				priceTotalCart = 0;
+				quantityTotalCart = 0;
+				var tableauLength = tableau.length;
+				for(var i =0; i < tableauLength; i++){
+					priceTotalCart += tableau[i].price * tableau[i].quantity;
+					priceTotalCart = Math.round(priceTotalCart*100)/100;
+					quantityTotalCart += tableau[i].quantity;
+				}
+			},
+
+			//fonction pour creer le debut du tableau (quantite augmente sinon on l'ajoute au tableau)		
+			creationCart : function(id,price,quantity) {
+				var tableauLength = tableau.length;
+				var find = false; 
+				for (var i=0; i < tableauLength; i++) {
+					if(tableau[i].id === id) {
+						find = true; 
+						tableau[i].quantity++;
+					} 
+				}
+				if (find === false) {
 					tableau.push({'id':id,'quantity':quantity,'price':price});
-				} else {
-					var tableauLength = tableau.length;
-					var find = false; 
-					for (var i=0; i < tableauLength; i++) {
-						if(tableau[i].id === id) {
-							find = true; 
-							tableau[i].quantity++;
-						} 
-					}
-					if (find === false) {
-						tableau.push({'id':id,'quantity':quantity,'price':price});
-					}	
-				}
-				return tableau; 
-			},
-			
-			addPrice : function(tableau) {
-				var length = tableau.length;
-				var totalquantity =0;
-				var totalprice = 0;
-				for (var i =0; i< length; i++){
-					totalquantity += tableau[i].quantity;
-					var pricetotalbd = tableau[i].price * tableau[i].quantity; 
-					totalprice += pricetotalbd;
-					totalprice = Math.round(totalprice*100)/100;
-				}
-				return {
-					totalprice: totalprice,
-					totalquantity: totalquantity
-				}
-
-			},
-			delPrice: function(id,tableau,totalprice) {
-				var Length = tableau.length;
-				for(var i=0; i<Length;i++){
-					if(tableau[i].id === id){
-						totalprice -= tableau[i].price; 	
-						totalprice = Math.round(totalprice*100)/100;
-					}
-				}
-				return totalprice;
+				}	
+				this.calculQuantityPriceCart();
 			},
 
-			delQuantity: function(id,tableau,totalquantity) {
-				var Length = tableau.length;
-				for(var i=0; i<Length;i++){
+			//fonction pour enlever des quantités ou supprimer dans le tableau
+			delQuantityBD : function(id) {
+				var tableauLength = tableau.length;
+				for(var i =0; i< tableauLength; i++){
 					if(tableau[i].id === id){
-						tableau[i].quantity -=1;	
-						totalquantity-=1;
-						if (tableau[i].quantity === 0) {
-							tableau.splice (i,1);
+						tableau[i].quantity--;
+						if (tableau[i].quantity <=0) {
+							tableau.splice(i,1);
 						}
-					}
-				}
-				return totalquantity;
+					} 
+				}	
+				this.calculQuantityPriceCart();
 			}
 		}
 	}

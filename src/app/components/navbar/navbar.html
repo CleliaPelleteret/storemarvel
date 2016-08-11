@@ -5,14 +5,13 @@
                 <span>MarvelLand</span>
             </a>
         </div>
-
         <div class="collapse navbar-collapse" ng-view>
-            <ul class="nav navbar-nav" ng-model='vm.addCart'>
+            <ul class="nav navbar-nav">
                 <li><a ui-sref="main">Accueil</a></li>
                 <li><a ui-sref="products">BD</a></li>
                 <li><a ui-sref="contact">Contact</a></li>
                 <li><a ui-sref="cart" id="panier">Panier</a></li>
-                <li><a ui-sref="panier" ></a></li>
+                <li class="total"><a ui-sref="cart">{{vm.cartService.getQuantityTotalCart()}} items, {{vm.cartService.getPriceTotalCart()}}$</a></li>
             </ul>
         </div>
     </div>

@@ -6,10 +6,6 @@
     .controller('ContactController', ContactController);
 
   /** @ngInject */
-  function ContactController() {
-    var vm = this;
-    vm.hello = "ge";
-
-  }
-
+	function ContactController() {
+	}
 })();

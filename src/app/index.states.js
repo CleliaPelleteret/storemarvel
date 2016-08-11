@@ -18,7 +18,7 @@
         url: '/products',
         templateUrl: 'app/products/products.html',
         controller: 'PageController',
-        controllerAs: 'onepage'
+        controllerAs: 'products'
       })
       .state('contact',{
         url: ('/contact'),
@@ -27,9 +27,9 @@
         controllerAs: 'contact' 
       })
        .state('cart',{
-        url: ('/Cart'),
-        templateUrl: 'app/panier/panier.html',
-        controller: 'PanierController',
+        url: ('/cart'),
+        templateUrl: 'app/cart/cart.html',
+        controller: 'CartController',
         controllerAs: 'cart' 
       })
       .state('description',{
