@@ -9,8 +9,14 @@
 	</div>
 	<div class="bdPresentation">
 		<div class="row">
-			<label class="col-md-12">Search: <input ng-model="products.searchT"></label>
-			<li class="col-md-6" id="bdPres" ng-repeat="blanketbd in products.reponseData.data.results | filter: products.searchT">
+			<label class="col-md-12">
+				Rechercher par Nom: 
+				<input ng-model="products.searchT">
+				<button  ng-click="products.search(products.searchT)">
+					Recherche
+				</button>
+			</label>
+			<li class="col-md-6" id="bdPres" ng-repeat="blanketbd in products.reponseData.data.results">
 				<a ui-sref="description({id:blanketbd.id})" >
 					<img class="productsimage" ng-src="{{blanketbd.images[0].path}}/portrait_xlarge.jpg">
 					<br/>

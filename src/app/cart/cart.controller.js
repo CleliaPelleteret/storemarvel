@@ -21,6 +21,10 @@
 		vm.delQuantityToCart = function(id){
 			cartService.delQuantityBD(id);
 		};
+
+		vm.clearTableau = function($http){
+
+		}
 	}
 
 })();

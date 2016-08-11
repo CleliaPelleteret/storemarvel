@@ -33,14 +33,26 @@
 		};
 
 		//ajout de la quantité ou de la bd dans le panier
-		vm.addToCart = function(id,price,quantity){
+		vm.addToCart = function(id,price,quantity) {
 			cartService.creationCart(id,price,quantity);
 		};
 
-
 		//suppression d'une quantité d'une bd
-		vm.delQuantityToCart = function(id){
+		vm.delQuantityToCart = function(id) {
 			cartService.delQuantityBD(id);
 		};
+
+		//function recherche selon l'input
+		vm.search = function(name) {
+			if (name === '' || name == undefined ){
+				$http.get(baseUrl+"/comics?apikey="+ apiKey).then(function(response) {
+					vm.reponseData = response.data;
+				});
+			}else{
+				$http.get(baseUrl+"/comics?titleStartsWith="+name+"&apikey="+ apiKey).then(function(response) {
+					vm.reponseData = response.data;
+				});
+			}
+		}
 	}
 })();
