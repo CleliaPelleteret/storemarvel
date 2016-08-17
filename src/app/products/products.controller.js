@@ -3,16 +3,17 @@
 
   angular
     .module('marvelShop')
-    .controller('PageController', PageController);
+    .controller('ProductController', ProductController);
 
   /** @ngInject */
-	function PageController($http,cartService) {
+	function ProductController($http,cartService) {
 		var vm = this;
 		var baseUrl = 'http://gateway.marvel.com/v1/public';
 		var apiKey = 'c6e5c775a0e14c0200183cbf0cce0aca';
 		vm.limit = 5;
 		vm.offset = 0;
 		vm.maxPages = 10;
+		vm.cartService = cartService;
 		
 		//fonction pour avoir les données de l'API marvel 
 		$http.get(baseUrl + '/comics?limit='+vm.limit+'&offset='+vm.offset+'&apikey=' + apiKey).then(function(response) {
@@ -32,20 +33,10 @@
 			});
 		};
 
-		//ajout de la quantité ou de la bd dans le panier
-		vm.addToCart = function(id,price,quantity) {
-			cartService.creationCart(id,price,quantity);
-		};
-
-		//suppression d'une quantité d'une bd
-		vm.delQuantityToCart = function(id) {
-			cartService.delQuantityBD(id);
-		};
-
 		//function recherche selon l'input
 		vm.search = function(name) {
 			if (name === '' || name == undefined ){
-				$http.get(baseUrl+"/comics?apikey="+ apiKey).then(function(response) {
+				$http.get(baseUrl + '/comics?limit='+vm.limit+'&offset='+vm.offset+'&apikey=' + apiKey).then(function(response) {
 					vm.reponseData = response.data;
 				});
 			}else{

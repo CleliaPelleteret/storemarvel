@@ -21,10 +21,10 @@
 				Date de vente: <span ng-bind= "bd.dates| date:'dd-MM-yyyy'" class="text"> {{date}}</span>
 			</div>	
 			<div class="col-md-6 col-md-offset-1" id="addordel">
-				<button class="add" ng-click="bd.addToCart(bd.base.id,bd.base.prices[0].price,1)">
+				<button class="add" ng-click="bd.addToCart(bd.base.id,bd.base.prices[0].price,1,bd.base.title)">
 					Ajouter au panier
 				</button>
-				<button class="del" ng-click="bd.delQuantityToCart(bd.base.id)">
+				<button class="del" ng-click="bd.delQuantityToCart(bd.base.id)" ng-if="bd.cartService.getQuantityTotalCart()>0">
 					Supprimer du panier
 				</button>
 			</div>

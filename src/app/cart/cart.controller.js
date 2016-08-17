@@ -9,12 +9,11 @@
 	function CartController(cartService) {
 		var vm = this;
 		vm.cartService = cartService;
-
 		vm.tableau = cartService.getTableau;
-
+		
 		//ajout de la quantité ou de la bd dans le panier
-		vm.addToCart = function(id,price,quantity){
-			cartService.creationCart(id,price,quantity);
+		vm.addToCart = function(id,price,quantity,title){
+			cartService.creationCart(id,price,quantity,title);
 		};
 
 		//suppression d'une quantité d'une bd
@@ -22,9 +21,9 @@
 			cartService.delQuantityBD(id);
 		};
 
-		vm.clearTableau = function($http){
-
+		vm.clearTableau = function(){
+			vm.tableau.length = 0;
+			cartService.calculQuantityPriceCart();
 		}
 	}
-
 })();

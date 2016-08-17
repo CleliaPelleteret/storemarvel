@@ -37,7 +37,7 @@
 			},
 
 			//fonction pour creer le debut du tableau (quantite augmente sinon on l'ajoute au tableau)		
-			creationCart : function(id,price,quantity) {
+			creationCart : function(id,price,quantity,title) {
 				var tableauLength = tableau.length;
 				var find = false; 
 				for (var i=0; i < tableauLength; i++) {
@@ -47,7 +47,7 @@
 					} 
 				}
 				if (find === false) {
-					tableau.push({'id':id,'quantity':quantity,'price':price});
+					tableau.push({'id':id,'quantity':quantity,'price':price,'title':title});
 				}	
 				this.calculQuantityPriceCart();
 			},

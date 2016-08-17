@@ -17,7 +17,7 @@
       .state('products',{
         url: '/products',
         templateUrl: 'app/products/products.html',
-        controller: 'PageController',
+        controller: 'ProductController',
         controllerAs: 'products'
       })
       .state('contact',{

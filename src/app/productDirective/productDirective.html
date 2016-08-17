@@ -1,0 +1,23 @@
+<a ui-sref="description({id:vm.id})">
+	<img class="productsimage" ng-src="{{vm.img}}/portrait_xlarge.jpg"><br/>
+	<span class="titlebd">
+		{{vm.title}}<br/>
+	</span> 
+</a>
+<div class="productscreator">
+	<span ng-repeat="creator in vm.creators" class="creator">
+		{{creator.name}}
+	</span><br/>
+</div>
+<p class="productsdescription">
+	{{vm.description}}
+</p>
+<span class="price">
+	{{vm.price}}$ <br/>
+</span>
+<button class="addCart" ng-click="vm.addToCart(vm.id,vm.price,1,vm.title)">
+	Ajouter au panier
+</button><br/>
+<button class="delCart" ng-click="vm.delQuantityToCart(vm.id)" ng-if="vm.cartService.getQuantityTotalCart() > 0">
+	Supprimer du panier
+</button>
